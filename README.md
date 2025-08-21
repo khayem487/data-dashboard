@@ -40,6 +40,14 @@ python app.py
 http://localhost:5000
 ```
 
+## API disponibles
+
+- `GET /api/kpis`
+- `GET /api/par_mois`
+- `GET /api/par_categorie`
+- `GET /api/par_fournisseur`
+- `GET /api/cascade_budget`
+
 ## Screenshots
 
 *(à venir)*
