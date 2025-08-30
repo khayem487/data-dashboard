@@ -65,6 +65,10 @@
 
       const numFmt = new Intl.NumberFormat("fr-FR");
 
+      function toKEuro(value) {
+        return `${Math.round(value / 1000)}k€`;
+      }
+
       function baseChartOptions() {
         return {
           responsive: true,
@@ -109,7 +113,7 @@
             scales: {
               y: {
                 ticks: {
-                  callback: (v) => `${Math.round(v / 1000)}k€`,
+                  callback: (v) => toKEuro(v),
                 },
               },
             },
@@ -163,7 +167,7 @@
             scales: {
               x: {
                 ticks: {
-                  callback: (v) => `${Math.round(v / 1000)}k€`,
+                  callback: (v) => toKEuro(v),
                 },
               },
             },
@@ -221,7 +225,7 @@
               y: {
                 stacked: true,
                 ticks: {
-                  callback: (v) => `${Math.round(v / 1000)}k€`,
+                  callback: (v) => toKEuro(v),
                 },
               },
             },
