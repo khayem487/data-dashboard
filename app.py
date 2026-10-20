@@ -3,9 +3,9 @@ from pathlib import Path
 import pandas as pd
 from flask import Flask, jsonify, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="public/static")
 
-DATA_PATH = Path("data") / "achats.csv"
+DATA_PATH = Path(__file__).resolve().parent / "data" / "achats.csv"
 BUDGET_INITIAL = 500_000
 CATEGORIES_ORDER = [
     "Matières premières",
@@ -42,6 +42,11 @@ def validated_df() -> pd.DataFrame:
 @app.route("/")
 def index():
     return render_template("index.html")
+
+
+@app.route("/health")
+def health():
+    return jsonify(status="ok", rows=len(df_achats), dataset="synthetic-demo")
 
 
 @app.route("/api/kpis")
@@ -139,4 +144,4 @@ def api_cascade_budget():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=False, port=5000)

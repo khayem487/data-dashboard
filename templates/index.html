@@ -10,10 +10,11 @@
   <body>
     <header class="header">
       <h1>Tableau de bord Achats</h1>
-      <p>Airbus Atlantic — Simulation</p>
+      <p>Analyse des achats industriels — données fictives de démonstration</p>
     </header>
 
     <main class="container">
+      <p id="dashboard-error" class="status-message" role="alert" hidden></p>
       <section class="kpi-grid">
         <div class="kpi-card">
           <h3>Total achats validés</h3>
@@ -36,22 +37,22 @@
       <section class="charts-grid">
         <article class="chart-card">
           <h2>Évolution mensuelle des achats</h2>
-          <canvas id="chartMois"></canvas>
+          <div class="chart-area"><canvas id="chartMois" role="img" aria-label="Évolution mensuelle des achats validés"></canvas></div>
         </article>
 
         <article class="chart-card">
           <h2>Répartition par catégorie</h2>
-          <canvas id="chartCategorie"></canvas>
+          <div class="chart-area"><canvas id="chartCategorie" role="img" aria-label="Répartition des achats par catégorie"></canvas></div>
         </article>
 
         <article class="chart-card">
           <h2>Top 5 fournisseurs</h2>
-          <canvas id="chartFournisseur"></canvas>
+          <div class="chart-area"><canvas id="chartFournisseur" role="img" aria-label="Cinq fournisseurs par montant des achats"></canvas></div>
         </article>
 
         <article class="chart-card">
           <h2>Cascade budgétaire</h2>
-          <canvas id="chartCascade"></canvas>
+          <div class="chart-area"><canvas id="chartCascade" role="img" aria-label="Évolution du budget après chaque catégorie de dépenses"></canvas></div>
         </article>
       </section>
     </main>
@@ -239,7 +240,9 @@
           await Promise.all([drawMois(), drawCategorie(), drawFournisseur(), drawCascade()]);
         } catch (err) {
           console.error(err);
-          alert("Impossible de charger le dashboard. Vérifiez que Flask tourne bien.");
+          const message = document.getElementById("dashboard-error");
+          message.textContent = "Les graphiques n’ont pas pu être chargés. Réessayez en actualisant la page.";
+          message.hidden = false;
         }
       }
 

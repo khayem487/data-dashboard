@@ -96,6 +96,19 @@ body {
   height: 100% !important;
 }
 
+.chart-area {
+  position: relative;
+  height: 280px;
+  min-width: 0;
+}
+
+.status-message {
+  padding: 1rem;
+  background: #fff2e6;
+  color: #793900;
+  border-radius: 8px;
+}
+
 @media (max-width: 900px) {
   .kpi-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
