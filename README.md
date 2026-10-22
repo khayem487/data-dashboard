@@ -54,6 +54,11 @@ http://localhost:5000
 
 ## Déploiement et vérifications
 
+Application publique : **https://khayem-data-dashboard.vercel.app/**.
+Le projet Vercel est relié à ce dépôt : un push sur `main` reconstruit la
+production automatiquement. Les autres branches produisent un aperçu protégé.
+Les modifications locales doivent être commitées et poussées pour être publiées.
+
 Le projet utilise Python 3.12 sur Vercel. Le CSV de démonstration est inclus dans le déploiement ; les chemins de fichiers ne dépendent pas du dossier de lancement. Les assets sont servis depuis `public/static/`.
 
 Les données sont **entièrement fictives**, générées avec une graine fixe : 200 achats sur 2023–2024. Cette démonstration n'est pas connectée au système d'information d'une entreprise. Elle ne requiert ni compte, ni base externe, ni identifiants.
